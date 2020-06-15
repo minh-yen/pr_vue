@@ -14,8 +14,11 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest()->paginate(5);
-        return view('questions.index',compact('questions'));
+        //render trả ra chuỗi chứa nội dụng của view -> view chỉ đc biên dịch nhưng k hiện lên trình duyệt
+        //\DB::enableQueryLog();
+        $questions = Question::with('user')->latest()->paginate(5);
+        return view('questions.index',compact('questions'))/*->render()*/;
+        //dd(\DB::getQueryLog());
     }
 
     /**
