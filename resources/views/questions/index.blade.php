@@ -5,17 +5,24 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">All questions</div>
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h2>All question</h2>
+                        <div class="ml-auto">
+                            <a href=" {{ route('questions.create') }}" class="btn btn-outline-secondary">Ask question</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body">
-                    
+
                     @foreach ($questions as $question)
                     <div class="media">
                         <div class="d-flex flex-column counters">
                             <div class="vote">
                                 <strong>{{ $question->votes }}</strong> {{ str_plural('vote', $question->votes) }}
                             </div>
-                             <div class="status {{ $question->status }} ">
+                            <div class="status {{ $question->status }} ">
                                 <strong>{{ $question->answer }}</strong> {{ str_plural('answer', $question->answer    ) }}
                             </div>
                             <div class="view">
