@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-	protected $fillable = ['title', 'body'];
+	protected $table = 'questions';
+	protected $fillable = ['title','slug', 'body'];
 
 	public function user() {
 		return $this->belongsTo(User::class);
 	}
 
-	public function setTitelAttribute($value) {
+	/*public function setTitelAttribute($value) {
 		$this->attributes['title'] = $value ;
 		$this->attributes['slug'] = str_slug($value);
-	}
+	}*/
 
 	public function getUrlAttribute() {
 		return  route("questions.show", $this->id);
